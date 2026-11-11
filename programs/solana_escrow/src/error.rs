@@ -1,9 +1,10 @@
 use anchor_lang::prelude::*;
 
+// Explain the checks the escrow instructions enforce.
 #[error_code]
-pub enum ErrorCode {
-    #[msg("Only the counter authority can update this counter")]
-    Unauthorized,
-    #[msg("Counter has reached the maximum value")]
-    CounterOverflow,
+pub enum EscrowError {
+    #[msg("Token amounts must be greater than zero")]
+    InvalidAmount,
+    #[msg("Token A and token B must use different mints")]
+    SameMint,
 }
